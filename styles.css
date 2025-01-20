@@ -16,6 +16,7 @@
     --body-bg: rgb(198, 191, 202);
     --header-footer: #9d9dbd;
     --header-h1: #444488;
+    --grid: #fff;
     --footer-p: #444488;
     --container-menu-bg-color: violet;
     --borders: wheat;
@@ -83,11 +84,11 @@ main {
 
 .containers {
     border: thick solid var(--borders);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .container-grid {
-    background-color: aquamarine;
+    background-color: var(--grid);
     width: 400px;
     height: 400px;
 }
