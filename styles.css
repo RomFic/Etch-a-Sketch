@@ -20,6 +20,7 @@
     --footer-p: #444488;
     --container-menu-bg-color: violet;
     --borders: wheat;
+    --buttons: #3498db;
 }
 
 body {
@@ -78,7 +79,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 73px;
 }
 
 
@@ -98,17 +99,26 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 650px;
+    width: 750px;
     height: 100px;
 }
 
 
 /* ------------------ menu ------------------*/
 
+.grid-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    gap: 8px;
+}
+
 #color-picker {
     width: 50px;
     height: 35px;
-    border: thick solid var(--borders);
+    border: 3px solid var(--borders);
     border-radius: 5px;
 }
 
@@ -119,5 +129,21 @@ main {
 }
 
 .btn {
+    background-color: var(--buttons);
+    color: #fff;
+    border: 0;
+    border-radius: 9px;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    border: 3px solid var(--borders);
+}
+
+.btn#rainbow {
+    padding: 8px 20px;
+}
+
+.btn#reset {
+    padding: 20px;
 }
