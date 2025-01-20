@@ -104,7 +104,7 @@ main {
 
 /* ------------------ menu ------------------*/
 
-.color-picker {
+#color-picker {
     width: 50px;
     height: 35px;
     border: thick solid var(--borders);
@@ -117,7 +117,6 @@ main {
     gap: 5px;
 }
 
-button.rainbow,
-button.clear {
+.btn {
     cursor: pointer;
 }
