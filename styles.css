@@ -13,8 +13,11 @@
 }
 
 :root {
-    --color-header: #9d9dbd;
-    --color-header-h1: #444488;
+    --header-footer: #9d9dbd;
+    --header-h1: #444488;
+    --footer-p: #444488;
+    --container-menu-background-color: violet;
+    --borders: wheat;
 }
 
 body {
@@ -27,7 +30,7 @@ body {
 /* ------------------ header ------------------*/
 
 header {
-    background-color: var(--color-header);
+    background-color: var(--header-footer);
     text-align: center;
     padding: 10px;
     top: 0;
@@ -37,7 +40,7 @@ header {
 
 header h1 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--color-header-h1);
+    color: var(--header-h1);
     font-size: 2.8rem;
     letter-spacing: 6px;
 }
@@ -45,7 +48,7 @@ header h1 {
 /* ------------------ footer ------------------*/
 
 footer {
-    background-color: var(--color-header);
+    background-color: var(--header-footer);
     text-align: center;
     padding: 10px;
     bottom: 0;
@@ -55,7 +58,7 @@ footer {
 
 footer p {
     font-family: 'Montserrat', sans-serif;
-    color: var(--color-header-h1);
+    color: var(--footer-p);
     font-size: 0.9rem;
     font-weight: bold;
 }
@@ -78,7 +81,7 @@ main {
 
 
 .containers {
-    border: thick solid wheat;
+    border: thick solid var(--borders);
     border-radius: 20px;
 }
 
@@ -89,11 +92,27 @@ main {
 }
 
 .container-menu {
-    background-color: violet;
+    background-color: var(--container-menu-background-color);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 600px;
     height: 100px;
     gap: 50px;
+}
+
+
+/* ------------------ menu ------------------*/
+
+.color-picker {
+    width: 50px;
+    height: 35px;
+    border: thick solid var(--borders);
+    border-radius: 5px;
+}
+
+.color {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
