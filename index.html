@@ -16,15 +16,23 @@
         <h1>Etch-a-SketchPad</h1>
     </header>
 
-    <div class="container">
-        <div class="menu">
+    <main>
 
+        <div class="content-container">
+            <div class="containers container-grid">
+            </div>
+
+            <div class="containers container-menu">
+                <input id="slider" type="range" min="10" max="100">
+
+                <div>Display grid: <input type="checkbox" class="display-grid" checked></div>
+
+                <div>Color: <input type="color" class="color-picker"></div>
+
+                <button name="button" type="button" class="clear">Clear all</button>
+            </div>
         </div>
-
-        <div class="container-grid">
-
-        </div>
-    </div>
+    </main>
 
     <footer>
         <p>Copyright © Romain 2025 (The Odin Project)</p>
