@@ -25,20 +25,19 @@
 
 body {
     background-color: var(--body-bg);
-    display: flex;
-    justify-content: space-around;
-    min-height: 100vh;
 }
 
-/* ------------------ header ------------------*/
+/* ------------------ header, footer ------------------*/
 
-header {
+header,
+footer {
     background-color: var(--header-footer);
-    text-align: center;
+    flex-basis: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     padding: 10px;
-    top: 0;
     width: 100%;
-    position: fixed;
 }
 
 header h1 {
@@ -46,17 +45,6 @@ header h1 {
     color: var(--header-h1);
     font-size: 2.8rem;
     letter-spacing: 6px;
-}
-
-/* ------------------ footer ------------------*/
-
-footer {
-    background-color: var(--header-footer);
-    text-align: center;
-    padding: 10px;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
 }
 
 footer p {
@@ -68,18 +56,18 @@ footer p {
 
 /* ------------------ container ------------------*/
 
-main {
+.main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 100vh;
 }
 
-.content-container {
+.content-containers {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
 }
 
 .containers {
@@ -87,19 +75,25 @@ main {
     border-radius: 10px;
 }
 
-.container-grid {
+/* .container-grid {
     background-color: var(--grid);
-    width: 400px;
-    height: 400px;
-}
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 3;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    aspect-ratio: 1 / 1;
+} */
+
 
 .container-menu {
     background-color: var(--container-menu-bg-color);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 750px;
-    height: 100px;
+    flex-wrap: wrap;
+    padding: 25px;
+    gap: 20px;
 }
 
 /* ------------------ menu ------------------*/
@@ -170,4 +164,14 @@ main {
     font-weight: 600;
     font-size: 17px;
     letter-spacing: 1px;
+}
+
+.square {
+    background-color: blueviolet;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 3px solid black;
+    width: 30px;
+    height: 30px;
 }
