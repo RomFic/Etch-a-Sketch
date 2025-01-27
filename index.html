@@ -18,14 +18,12 @@
         </header>
 
         <div class="content-containers">
-            <div class="containers container-grid">
-                <!-- <div class="square"></div> -->
-            </div>
+            <div class="containers container-grid"></div>
 
             <div class="containers container-menu">
                 <div class="grid-slider">
-                    <p>Grid size: </p>
-                    <input id="slider" type="range" min="10" max="100">
+                    <p id="grid-info">Grid size: </p>
+                    <input id="slider" type="range" min="16" max="100" value="16">
                 </div>
 
                 <div class="remove-grid">
@@ -38,12 +36,12 @@
                     <input type="color" id="color-picker">
                 </div>
 
-                <button name="button" id="rainbow" type="button" class="btn">Rainbow!</button>
+                <button name="button" id="rainbow" type="button" class="btn">&#127752</button>
                 <button name="button" id="reset" type="button" class="btn">Clear</button>
             </div>
         </div>
 
-        <footer>
+        <footer id="footer">
             <p>Copyright © Romain 2025 (The Odin Project)</p>
         </footer>
     </div>
