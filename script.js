@@ -5,69 +5,38 @@ const slider = document.querySelector('#slider');
 const removeGrid = document.querySelector('#remove-grid-check');
 const colorPicker = document.querySelector('#color-picker');
 const rainbowBtn = document.querySelector('#rainbow');
-const randomColorBtn = document.querySelector('#reset');
+const clearBtn = document.querySelector('#reset');
 
+const sliderValue = slider.value;
 
-// let div = document.createElement('div');
-// div.style.color = "black";
-// div.style.height = "20px";
-// div.style.width = "20px";
-// div.style.border = "solid 1px";
-// grid.appendChild(div);
-
-// for (let i = 0; i < 16; i++) {
-//     let div = document.createElement('div');
-//     div.style.display = "flex";
-//     div.style.flexDirection = "row";
-//     div.style.alignItems = "center";
-//     div.style.color = "black";
-//     div.style.height = "20px";
-//     div.style.width = "20px";
-//     div.style.border = "solid 1px";
-//     grid.appendChild(div);
-// }
-
-// function mkGrid() {
-//     for (let i = 0; i < 16; i++) {
-//         for (let x = 0; x < 16; x++) {
-//             let div = document.createElement('div');
-//             div.style.cssText = ' flex-basis: 37.5px; height: 37.5px; background-color: white; border: solid 1px';
-//             grid.appendChild(div);
-//         }
-//     }
-// }
-
-// mkGrid();
-
-
-
-const size = 16; // Initial grid size
-
-function createSquares(size) {
-    for (let i = 0; i < size * size; i++) {
+// Function -> Create grid
+function generateGrid(sliderValue) {
+    for (let i = 0; i < sliderValue * sliderValue; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
         grid.appendChild(square);
+        grid.style.setProperty('--number', sliderValue);
     }
 }
 
-createSquares(size);
+generateGrid(sliderValue);
 
-// Event listener for changing grid size
-document.getElementById('slider').addEventListener('input', () => {
+// Event listener -> changing grid size
+slider.addEventListener('input', () => {
     const newSize = slider.value;
-    grid.innerHTML = ''
-    createSquares(newSize);
+    grid.innerHTML = '';
+    generateGrid(newSize);
+});
 
+// Event listener -> changing color
+colorPicker.addEventListener("change", () => {
+    document.querySelector('.square').style.backgroundColor = colorPicker.value;
+    console.log(colorPicker.value)
 });
 
 
 
 // colorPicker.addEventListener("change", () => console.log(colorPicker.value));
-
-colorPicker.addEventListener("input", () => {
-    document.querySelector('.square').style.backgroundColor = colorPicker.value;
-});
 
 // slider.addEventListener("input", () => {
 //     document.querySelector('.container-grid').style.height = slider.value + 'px';

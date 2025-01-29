@@ -23,6 +23,8 @@
     --buttons: #3498db;
     --buttons-hover: #2e8cca;
     --buttons-active: #3877a1;
+    --outline-square: #d4d4d4;
+    --number: 16;
 }
 
 body {
@@ -81,17 +83,15 @@ footer p {
 .container-grid {
     background-color: var(--grid);
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
 }
 
 .square {
-    background-color: #fff;
-    border: 1px solid black;
-    width: 30px;
-    height: 30px;
+    outline: 1px solid var(--outline-square);
+    min-width: calc(100% / var(--number));
+    aspect-ratio: 1 / 1;
 }
 
 /* ------------------ menu ------------------*/
