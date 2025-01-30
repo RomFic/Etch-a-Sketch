@@ -26,8 +26,7 @@ function changeGridSize() {
     const newSize = slider.value;
     grid.innerHTML = '';
     generateGrid(newSize);
-    console.log(newSize);
-
+    // console.log(newSize);
 }
 
 // Event listener -> when clicking on slider
@@ -38,7 +37,7 @@ slider.addEventListener('input', () => {
 // Event listener -> when using wheel of mouse
 slider.addEventListener("wheel", function (e) {
     if (e.deltaY < 0) { // scroll up
-        this.value = parseInt(this.value) + 1;
+        this.value = parseInt(this.value) + 3;
         changeGridSize();
     } else { // scroll down
         if (parseInt(this.value) > 0) {
