@@ -164,13 +164,13 @@ footer p {
     padding: 18px;
 }
 
-.remove-grid {
+.show-grid {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-#remove-grid-check {
+#show-grid-check {
     cursor: pointer;
     width: 20px;
     height: 20px;
