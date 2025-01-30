@@ -21,11 +21,32 @@ function generateGrid(sliderValue) {
 
 generateGrid(sliderValue);
 
-// Event listener -> changing grid size
-slider.addEventListener('input', () => {
+// Function -> changing grid size
+function changeGridSize() {
     const newSize = slider.value;
     grid.innerHTML = '';
     generateGrid(newSize);
+    console.log(newSize);
+
+}
+
+// Event listener -> when clicking on slider
+slider.addEventListener('input', () => {
+    changeGridSize();
+});
+
+// Event listener -> when using wheel of mouse
+slider.addEventListener("wheel", function (e) {
+    if (e.deltaY < 0) { // scroll up
+        this.value = parseInt(this.value) + 1;
+        changeGridSize();
+    } else { // scroll down
+        if (parseInt(this.value) > 0) {
+            this.value = parseInt(this.value) - 1;
+            changeGridSize();
+        }
+    }
+    e.preventDefault(); // prevent the page from scrolling
 });
 
 // Function - Grid color
@@ -56,3 +77,10 @@ colorPicker.addEventListener("change", () => {
 // });
 
 // div2.style.cssText = 'border: black solid 1px; background-color: pink; height: 200px';
+
+
+// TO DO  list
+// Stop event when slider goes over max (60)
+// load color when changing grid size
+
+
