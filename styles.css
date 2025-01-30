@@ -74,7 +74,7 @@ footer p {
 }
 
 .containers {
-    border: thick solid var(--borders);
+    border: 7px solid var(--borders);
     border-radius: 10px;
 }
 
