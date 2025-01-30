@@ -12,10 +12,10 @@ const sliderValue = slider.value;
 // Function -> Create grid
 function generateGrid(sliderValue) {
     for (let i = 0; i < sliderValue * sliderValue; i++) {
-        const square = document.createElement('div');
-        square.classList.add('square');
-        grid.appendChild(square);
-        square.style.setProperty('--number', sliderValue);
+        const div = document.createElement('div');
+        div.classList.add('square');
+        grid.appendChild(div);
+        div.style.setProperty('--number-square', sliderValue);
     }
 }
 
@@ -28,10 +28,26 @@ slider.addEventListener('input', () => {
     generateGrid(newSize);
 });
 
+// Function - Grid color
+function colorGrid() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+        square.addEventListener('click', () => {
+            square.style.backgroundColor = colorPicker.value;
+        })
+    })
+};
+
+// Event listener -> main color (black) when DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const squares = document.querySelectorAll('.square');
+    colorGrid(squares);
+});
+
 // Event listener -> changing color
 colorPicker.addEventListener("change", () => {
-    document.querySelector('.square').style.backgroundColor = colorPicker.value;
-    console.log(colorPicker.value);
+    const squares = document.querySelectorAll('.square');
+    colorGrid(squares);
 });
 
 
