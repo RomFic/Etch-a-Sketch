@@ -39,19 +39,21 @@ slider.addEventListener('input', () => {
 
 // Event listener -> using wheel of mouse
 slider.addEventListener("wheel", function (e) {
-
     if (e.deltaY < 0) { // scroll up
         this.value = parseInt(this.value) + 3;
         changeGridSize();
-
     } else { // scroll down
         if (parseInt(this.value) > 0) {
             this.value = parseInt(this.value) - 1;
             changeGridSize();
         }
     }
-
     e.preventDefault(); // prevent the page from scrolling
+});
+
+// Event listener -> disable context menu when right-mouse clicked
+grid.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
 });
 
 generateGrid(sliderValue);
@@ -59,31 +61,27 @@ generateGrid(sliderValue);
 
 // COLOR ---------------------------------------------
 
-// Event listener -> main color (black) when DOM loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const squares = document.querySelectorAll('.square');
-    colorGrid(squares);
-});
-
 // Function -> Grid color
 function colorGrid() {
     const squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
-        square.addEventListener('click', () => {
+        square.addEventListener('mousedown', (e) => {
             square.style.backgroundColor = colorPicker.value;
+            if (e.button === 2) square.style.backgroundColor = '';
+
         })
     })
 };
 
-// Event listener -> changing color
-colorPicker.addEventListener("change", () => {
-    const squares = document.querySelectorAll('.square');
-    colorGrid(squares);
+// Event listener -> main color (black) when DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+    colorGrid();
 });
 
-
-
-
+// Event listener -> changing color
+colorPicker.addEventListener("change", () => {
+    colorGrid();
+});
 
 
 // slider.addEventListener("input", () => {
@@ -94,8 +92,3 @@ colorPicker.addEventListener("change", () => {
 
 
 // TODO
-// load color when changing grid size
-
-
-
-
