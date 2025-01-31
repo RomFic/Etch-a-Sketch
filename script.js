@@ -10,6 +10,9 @@ const clearBtn = document.querySelector('#reset');
 
 const sliderValue = slider.value;
 
+
+// GRID ---------------------------------------------
+
 // Function -> Create grid
 function generateGrid(sliderValue) {
     for (let i = 0; i < sliderValue * sliderValue; i++) {
@@ -20,15 +23,13 @@ function generateGrid(sliderValue) {
     }
 }
 
-generateGrid(sliderValue);
-
-// Function -> changing grid size
+// Function -> changing grid size and loading color
 function changeGridSize() {
     const newSize = slider.value;
     grid.innerHTML = '';
     generateGrid(newSize);
-    console.log(newSize);
     gridSize.textContent = `${newSize}`;
+    colorGrid();
 }
 
 // Event listener -> clicking on slider
@@ -38,9 +39,11 @@ slider.addEventListener('input', () => {
 
 // Event listener -> using wheel of mouse
 slider.addEventListener("wheel", function (e) {
+
     if (e.deltaY < 0) { // scroll up
         this.value = parseInt(this.value) + 3;
         changeGridSize();
+
     } else { // scroll down
         if (parseInt(this.value) > 0) {
             this.value = parseInt(this.value) - 1;
@@ -51,7 +54,18 @@ slider.addEventListener("wheel", function (e) {
     e.preventDefault(); // prevent the page from scrolling
 });
 
-// Function - Grid color
+generateGrid(sliderValue);
+
+
+// COLOR ---------------------------------------------
+
+// Event listener -> main color (black) when DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const squares = document.querySelectorAll('.square');
+    colorGrid(squares);
+});
+
+// Function -> Grid color
 function colorGrid() {
     const squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
@@ -61,17 +75,15 @@ function colorGrid() {
     })
 };
 
-// Event listener -> main color (black) when DOM loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const squares = document.querySelectorAll('.square');
-    colorGrid(squares);
-});
-
 // Event listener -> changing color
 colorPicker.addEventListener("change", () => {
     const squares = document.querySelectorAll('.square');
     colorGrid(squares);
 });
+
+
+
+
 
 
 // slider.addEventListener("input", () => {
