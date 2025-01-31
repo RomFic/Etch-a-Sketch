@@ -90,7 +90,6 @@ footer p {
 .square {
     outline: 1px solid var(--outline-square);
     min-width: calc(100% / var(--number-square));
-    aspect-ratio: 1 / 1;
 }
 
 /* ------------------ menu ------------------*/
