@@ -3,6 +3,7 @@
 const grid = document.querySelector('.container-grid');
 const slider = document.querySelector('#slider');
 const showGrid = document.querySelector('#remove-grid-check');
+const gridSize = document.querySelector('#grid-size');
 const colorPicker = document.querySelector('#color-picker');
 const rainbowBtn = document.querySelector('#rainbow');
 const clearBtn = document.querySelector('#reset');
@@ -26,15 +27,16 @@ function changeGridSize() {
     const newSize = slider.value;
     grid.innerHTML = '';
     generateGrid(newSize);
-    // console.log(newSize);
+    console.log(newSize);
+    gridSize.textContent = `${newSize}`;
 }
 
-// Event listener -> when clicking on slider
+// Event listener -> clicking on slider
 slider.addEventListener('input', () => {
     changeGridSize();
 });
 
-// Event listener -> when using wheel of mouse
+// Event listener -> using wheel of mouse
 slider.addEventListener("wheel", function (e) {
     if (e.deltaY < 0) { // scroll up
         this.value = parseInt(this.value) + 3;
@@ -45,6 +47,7 @@ slider.addEventListener("wheel", function (e) {
             changeGridSize();
         }
     }
+
     e.preventDefault(); // prevent the page from scrolling
 });
 
@@ -78,8 +81,9 @@ colorPicker.addEventListener("change", () => {
 // div2.style.cssText = 'border: black solid 1px; background-color: pink; height: 200px';
 
 
-// TO DO  list
-// Stop event when slider goes over max (60)
+// TODO
 // load color when changing grid size
+
+
 
 
