@@ -88,8 +88,13 @@ footer p {
 }
 
 .square {
-    outline: 1px solid var(--outline-square);
     min-width: calc(100% / var(--number-square));
+    /* outline: 1px solid var(--outline-square); */
+}
+
+
+.square-outline {
+    outline: 1px solid var(--outline-square);
 }
 
 /* ------------------ menu ------------------*/
@@ -103,6 +108,7 @@ footer p {
     padding: 27px;
     gap: 18px;
     max-width: 750px;
+    min-width: 450px;
 }
 
 .grid-slider {
