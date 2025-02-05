@@ -8,7 +8,7 @@ const colorPicker = document.querySelector('#color-picker');
 const rainbowBtn = document.querySelector('#rainbow');
 const clearBtn = document.querySelector('#reset');
 
-const sliderValue = slider.value;
+let sliderValue = slider.value;
 
 
 // GRID ---------------------------------------------
@@ -23,25 +23,35 @@ function generateGrid(sliderValue) {
         div.style.setProperty('--number-square', sliderValue);
 
         gridCheck.addEventListener('click', () => {
-            !gridCheck.checked ? div.classList.remove("square-outline") : div.classList.add("square-outline");
+            if (!gridCheck.checked) {
+                div.classList.remove("square-outline");
+                gridContainer.classList.remove("active");
+            } else {
+                div.classList.add("square-outline");
+                gridContainer.classList.add("active");
+            }
         })
-
     }
-
 }
 
 // Function -> changing grid size and loading color
 function changeGridSize() {
     const newSize = slider.value;
     gridContainer.innerHTML = '';
-    generateGrid(newSize);
     gridSize.textContent = `${newSize}`;
+    generateGrid(newSize);
     colorGrid();
+
+    if (!gridContainer.classList.contains('active')) {
+        gridContainer.classList.add("active");
+        gridCheck.checked = true;
+    }
 }
 
 // Event listener -> clicking on slider
 slider.addEventListener('input', () => {
     changeGridSize();
+
 });
 
 // Event listener -> using wheel of mouse
