@@ -160,11 +160,11 @@ footer p {
     background-color: var(--buttons-active);
 }
 
-.btn#rainbow {
+.btn#btn--rainbow {
     padding: 8px 20px;
 }
 
-.btn#reset {
+.btn#btn--reset {
     padding: 18px;
 }
 

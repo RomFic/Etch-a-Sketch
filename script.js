@@ -31,6 +31,8 @@ function generateGrid(sliderValue) {
             }
         });
     }
+
+    gridContainer.addEventListener('dragstart', (e) => e.preventDefault()); // to avoid dragging the grid container
 }
 
 // Function -> changing grid size and loading color
@@ -38,8 +40,10 @@ function changeGridSize() {
     const newSize = slider.value;
     gridContainer.innerHTML = '';
     gridSize.textContent = `${newSize}`;
+
     generateGrid(newSize);
     colorGrid();
+
 
     if (!gridContainer.classList.contains('active')) {
         gridContainer.classList.add("active");
@@ -82,20 +86,23 @@ function colorGrid() {
     const squares = document.querySelectorAll('.square');
 
     squares.forEach((square) => {
-        square.addEventListener('mouseover', (e) => {
-            e.preventDefault();
+        // Input-color
+        square.addEventListener('mouseover', () => {
             square.style.backgroundColor = colorPicker.value;
         });
 
+        // Random color
         rainbowBtn.addEventListener("click", () => {
-            square.addEventListener('mouseover', (e) => {
-                e.preventDefault();
+            square.addEventListener('mouseover', () => {
                 let r = Math.floor(Math.random() * 256);
                 let g = Math.floor(Math.random() * 256);
                 let b = Math.floor(Math.random() * 256);
                 square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             });
         });
+
+        // Opacity
+        // square.style.opacity = "0.1";
     })
 };
 
@@ -110,24 +117,17 @@ colorPicker.addEventListener("input", () => {
     colorGrid();
 });
 
-// Event listener -> rainbow color
-// rainbowBtn.addEventListener("click", () => {
-//     square.addEventListener('mouseover', (e) => {
-//         e.preventDefault();
-//         let r = Math.floor(Math.random() * 256);
-//         let g = Math.floor(Math.random() * 256);
-//         let b = Math.floor(Math.random() * 256);
-//         square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-//     });
-// });
+
+
 
 
 
 
 // TODO
-// Being able to paint while holding left mouse button (mousedown + mouseover)
-// Being able to erase color when right clicking
-// When removing the grid, it needs to stay that way when changing the size of the grid
+/* Being able to paint while holding left mouse button (mousedown + mouseover)
+Being able to erase color when right clicking */
+
+/* When removing the grid, it needs to stay that way when changing the size of the grid */
 
 
 
