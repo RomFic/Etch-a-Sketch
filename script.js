@@ -10,11 +10,10 @@ const clearBtn = document.querySelector('#btn--reset');
 
 let sliderValue = slider.value;
 
-
 // GRID ---------------------------------------------
 
 // Function -> Create grid
-function generateGrid() {
+function generateGrid(sliderValue) {
 
     for (let i = 0; i < sliderValue * sliderValue; i++) {
         const div = document.createElement('div');
@@ -84,29 +83,22 @@ function colorGrid() {
 
     squares.forEach((square) => {
         square.addEventListener('mouseover', (e) => {
-            // e.preventDefault();
+            e.preventDefault();
             square.style.backgroundColor = colorPicker.value;
         });
-    })
-};
 
-// Function -> random color
-function randomColors() {
-    for (let i = 0; i < sliderValue * sliderValue; i++) {
-
-        const squares = document.querySelectorAll('.square');
-        squares.forEach((square) => {
+        rainbowBtn.addEventListener("click", () => {
             square.addEventListener('mouseover', (e) => {
-                // e.preventDefault();
+                e.preventDefault();
                 let r = Math.floor(Math.random() * 256);
                 let g = Math.floor(Math.random() * 256);
                 let b = Math.floor(Math.random() * 256);
                 square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-
             });
-        })
-    }
-}
+        });
+    })
+};
+
 
 // Event listener -> main color (black) when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,14 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Event listener -> changing color
-colorPicker.addEventListener("change", () => {
+colorPicker.addEventListener("input", () => {
     colorGrid();
 });
 
 // Event listener -> rainbow color
-rainbowBtn.addEventListener("click", () => {
-    randomColors(sliderValue);
-});
+// rainbowBtn.addEventListener("click", () => {
+//     square.addEventListener('mouseover', (e) => {
+//         e.preventDefault();
+//         let r = Math.floor(Math.random() * 256);
+//         let g = Math.floor(Math.random() * 256);
+//         let b = Math.floor(Math.random() * 256);
+//         square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+//     });
+// });
 
 
 
