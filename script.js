@@ -5,8 +5,8 @@ const slider = document.querySelector('#slider');
 const gridCheck = document.querySelector('#toggle-grid-check');
 const gridSize = document.querySelector('#grid-size');
 const colorPicker = document.querySelector('#color-picker');
-const rainbowBtn = document.querySelector('#rainbow');
-const clearBtn = document.querySelector('#reset');
+const rainbowBtn = document.querySelector('#btn--rainbow');
+const clearBtn = document.querySelector('#btn--reset');
 
 let sliderValue = slider.value;
 
@@ -14,13 +14,13 @@ let sliderValue = slider.value;
 // GRID ---------------------------------------------
 
 // Function -> Create grid
-function generateGrid(sliderValue) {
+function generateGrid() {
 
     for (let i = 0; i < sliderValue * sliderValue; i++) {
         const div = document.createElement('div');
         div.classList.add('square', 'square-outline');
-        gridContainer.appendChild(div);
         div.style.setProperty('--number-square', sliderValue);
+        gridContainer.appendChild(div);
 
         gridCheck.addEventListener('click', () => {
             if (!gridCheck.checked) {
@@ -30,7 +30,7 @@ function generateGrid(sliderValue) {
                 div.classList.add("square-outline");
                 gridContainer.classList.add("active");
             }
-        })
+        });
     }
 }
 
@@ -51,7 +51,6 @@ function changeGridSize() {
 // Event listener -> clicking on slider
 slider.addEventListener('input', () => {
     changeGridSize();
-
 });
 
 // Event listener -> using wheel of mouse
@@ -91,10 +90,27 @@ function colorGrid() {
     })
 };
 
+// Function -> random color
+function randomColors() {
+    for (let i = 0; i < sliderValue * sliderValue; i++) {
+
+        const squares = document.querySelectorAll('.square');
+        squares.forEach((square) => {
+            square.addEventListener('mouseover', (e) => {
+                // e.preventDefault();
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+            });
+        })
+    }
+}
+
 // Event listener -> main color (black) when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
     colorGrid();
-
 });
 
 // Event listener -> changing color
@@ -102,17 +118,18 @@ colorPicker.addEventListener("change", () => {
     colorGrid();
 });
 
+// Event listener -> rainbow color
+rainbowBtn.addEventListener("click", () => {
+    randomColors(sliderValue);
+});
 
-// slider.addEventListener("input", () => {
-//     document.querySelector('.container-grid').style.height = slider.value + 'px';
-// });
 
-// div2.style.cssText = 'border: black solid 1px; background-color: pink; height: 200px';
 
 
 // TODO
 // Being able to paint while holding left mouse button (mousedown + mouseover)
 // Being able to erase color when right clicking
+// When removing the grid, it needs to stay that way when changing the size of the grid
 
 
 
