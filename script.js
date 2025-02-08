@@ -80,7 +80,7 @@ generateGrid(sliderValue);
 
 
 // COLOR ---------------------------------------------
-
+let number = 0;
 // Function -> Grid color
 function colorGrid() {
     const squares = document.querySelectorAll('.square');
@@ -101,11 +101,17 @@ function colorGrid() {
             });
         });
 
-        // Opacity
-        // square.style.opacity = "0.1";
-    })
-};
+        // Progressive darkening effect
+        square.style.opacity = 0.1;
 
+        square.addEventListener('mouseover', () => {
+            if (parseFloat(square.style.opacity) < 1) {
+                square.style.opacity = parseFloat(square.style.opacity) + 0.1;
+            }
+        });
+    });
+    // })
+};
 
 // Event listener -> main color (black) when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {

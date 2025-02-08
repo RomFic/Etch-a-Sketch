@@ -23,7 +23,7 @@
     --buttons: #3498db;
     --buttons-hover: #2e8cca;
     --buttons-active: #3877a1;
-    --outline-square: #d4d4d4;
+    --outline-square: #000000;
 }
 
 body {
@@ -89,9 +89,7 @@ footer p {
 
 .square {
     min-width: calc(100% / var(--number-square));
-    /* outline: 1px solid var(--outline-square); */
 }
-
 
 .square-outline {
     outline: 1px solid var(--outline-square);
