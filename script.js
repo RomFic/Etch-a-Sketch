@@ -17,6 +17,7 @@ function generateGrid(sliderValue) {
 
     for (let i = 0; i < sliderValue * sliderValue; i++) {
         const div = document.createElement('div');
+        div.style.opacity = 0.1;
         div.classList.add('square', 'square-outline');
         div.style.setProperty('--number-square', sliderValue);
         gridContainer.appendChild(div);
@@ -80,7 +81,7 @@ generateGrid(sliderValue);
 
 
 // COLOR ---------------------------------------------
-let number = 0;
+
 // Function -> Grid color
 function colorGrid() {
     const squares = document.querySelectorAll('.square');
@@ -102,8 +103,6 @@ function colorGrid() {
         });
 
         // Progressive darkening effect
-        square.style.opacity = 0.1;
-
         square.addEventListener('mouseover', () => {
             if (parseFloat(square.style.opacity) < 1) {
                 square.style.opacity = parseFloat(square.style.opacity) + 0.1;
