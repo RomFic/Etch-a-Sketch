@@ -13,7 +13,7 @@ let sliderValue = slider.value;
 // GRID ---------------------------------------------
 
 // Function -> Create grid
-function generateGrid(sliderValue) {
+function grid(sliderValue) {
 
     for (let i = 0; i < sliderValue * sliderValue; i++) {
         const div = document.createElement('div');
@@ -33,6 +33,30 @@ function generateGrid(sliderValue) {
         });
     }
 
+    // Event listener -> clicking on slider
+    slider.addEventListener('input', () => {
+        changeGridSize();
+    });
+
+    // Event listener -> using wheel of mouse
+    slider.addEventListener("wheel", function (e) {
+        if (e.deltaY < 0) { // scroll up
+            this.value = parseInt(this.value) + 3;
+            changeGridSize();
+        } else { // scroll down
+            if (parseInt(this.value) > 0) {
+                this.value = parseInt(this.value) - 1;
+                changeGridSize();
+            }
+        }
+        e.preventDefault(); // prevent the page from scrolling
+    });
+
+    // Event listener -> disable context menu when right-mouse clicked
+    gridContainer.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+
     gridContainer.addEventListener('dragstart', (e) => e.preventDefault()); // to avoid dragging the grid container
 }
 
@@ -42,7 +66,7 @@ function changeGridSize() {
     gridContainer.innerHTML = '';
     gridSize.textContent = `${newSize}`;
 
-    generateGrid(newSize);
+    grid(newSize);
     colorGrid();
 
 
@@ -52,32 +76,7 @@ function changeGridSize() {
     }
 }
 
-// Event listener -> clicking on slider
-slider.addEventListener('input', () => {
-    changeGridSize();
-});
-
-// Event listener -> using wheel of mouse
-slider.addEventListener("wheel", function (e) {
-    if (e.deltaY < 0) { // scroll up
-        this.value = parseInt(this.value) + 3;
-        changeGridSize();
-    } else { // scroll down
-        if (parseInt(this.value) > 0) {
-            this.value = parseInt(this.value) - 1;
-            changeGridSize();
-        }
-    }
-    e.preventDefault(); // prevent the page from scrolling
-});
-
-// Event listener -> disable context menu when right-mouse clicked
-gridContainer.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-});
-
-
-generateGrid(sliderValue);
+grid(sliderValue);
 
 
 // COLOR ---------------------------------------------
