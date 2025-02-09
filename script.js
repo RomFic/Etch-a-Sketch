@@ -108,6 +108,13 @@ function colorGrid() {
                 square.style.opacity = parseFloat(square.style.opacity) + 0.1;
             }
         });
+
+
+        // Clear 
+        clearBtn.addEventListener("click", () => {
+            square.style.backgroundColor = '';
+            square.style.opacity = 0.1;
+        });
     });
     // })
 };
@@ -121,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
 colorPicker.addEventListener("input", () => {
     colorGrid();
 });
-
 
 
 
