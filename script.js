@@ -12,9 +12,10 @@ let sliderValue = slider.value;
 
 // GRID ---------------------------------------------
 
-// Function -> Create grid
+// Function -> grid functions
 function grid(sliderValue) {
 
+    // create dynamically grid
     for (let i = 0; i < sliderValue * sliderValue; i++) {
         const div = document.createElement('div');
         div.style.opacity = 0.1;
@@ -32,32 +33,6 @@ function grid(sliderValue) {
             }
         });
     }
-
-    // Event listener -> clicking on slider
-    slider.addEventListener('input', () => {
-        changeGridSize();
-    });
-
-    // Event listener -> using wheel of mouse
-    slider.addEventListener("wheel", function (e) {
-        if (e.deltaY < 0) { // scroll up
-            this.value = parseInt(this.value) + 3;
-            changeGridSize();
-        } else { // scroll down
-            if (parseInt(this.value) > 0) {
-                this.value = parseInt(this.value) - 1;
-                changeGridSize();
-            }
-        }
-        e.preventDefault(); // prevent the page from scrolling
-    });
-
-    // Event listener -> disable context menu when right-mouse clicked
-    gridContainer.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-    });
-
-    gridContainer.addEventListener('dragstart', (e) => e.preventDefault()); // to avoid dragging the grid container
 }
 
 // Function -> changing grid size and loading color
@@ -69,15 +44,56 @@ function changeGridSize() {
     grid(newSize);
     colorGrid();
 
-
     if (!gridContainer.classList.contains('active')) {
         gridContainer.classList.add("active");
         gridCheck.checked = true;
     }
 }
 
-grid(sliderValue);
 
+// Event Listeners ---------------------------------------------
+
+// Event listener -> disable context menu when right-mouse clicked
+gridContainer.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+});
+
+// Event listener -> avoid dragging the grid container
+gridContainer.addEventListener('dragstart', (e) => e.preventDefault());
+
+// Event listener -> changing color
+colorPicker.addEventListener("input", () => {
+    colorGrid();
+});
+
+// Event listener -> color ready when DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+    colorGrid();
+});
+
+// Event listener -> slider
+slider.addEventListener('input', () => {
+    changeGridSize();
+});
+
+// Event listener -> using wheel of mouse
+slider.addEventListener("wheel", function (e) {
+    if (e.deltaY < 0) { // scroll up
+        this.value = parseInt(this.value) + 3;
+        changeGridSize();
+    } else { // scroll down
+        if (parseInt(this.value) > 0) {
+            this.value = parseInt(this.value) - 1;
+            changeGridSize();
+        }
+    }
+    e.preventDefault(); // prevent the page from scrolling
+});
+
+
+
+
+grid(sliderValue);
 
 // COLOR ---------------------------------------------
 
@@ -86,6 +102,7 @@ function colorGrid() {
     const squares = document.querySelectorAll('.square');
 
     squares.forEach((square) => {
+
         // Input-color
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = colorPicker.value;
@@ -108,28 +125,13 @@ function colorGrid() {
             }
         });
 
-
         // Clear 
         clearBtn.addEventListener("click", () => {
             square.style.backgroundColor = '';
             square.style.opacity = 0.1;
         });
     });
-    // })
 };
-
-// Event listener -> main color (black) when DOM loaded
-document.addEventListener('DOMContentLoaded', () => {
-    colorGrid();
-});
-
-// Event listener -> changing color
-colorPicker.addEventListener("input", () => {
-    colorGrid();
-});
-
-
-
 
 
 
