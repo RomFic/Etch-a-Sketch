@@ -145,3 +145,6 @@ Being able to erase color when right clicking */
 
 
 // https://spottedmonkey.github.io/etch-a-sketch-odin/images/rainbow-eraser.png
+
+
+// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
