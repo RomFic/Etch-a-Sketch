@@ -141,10 +141,5 @@ Being able to erase color when right clicking */
 
 /* When removing the grid, it needs to stay that way when changing the size of the grid */
 
+/* Need to change the code in order to optimize - too slow when changing the grid size - probably the loop*/
 
-
-
-// https://spottedmonkey.github.io/etch-a-sketch-odin/images/rainbow-eraser.png
-
-
-// TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
