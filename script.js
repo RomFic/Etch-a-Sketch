@@ -91,8 +91,6 @@ slider.addEventListener("wheel", function (e) {
 });
 
 
-
-
 grid(sliderValue);
 
 // COLOR ---------------------------------------------
@@ -104,24 +102,24 @@ function colorGrid() {
     squares.forEach((square) => {
 
         // Input-color
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = colorPicker.value;
+        square.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = colorPicker.value;
         });
 
         // Random color
         rainbowBtn.addEventListener("click", () => {
-            square.addEventListener('mouseover', () => {
+            square.addEventListener('mouseover', (e) => {
                 let r = Math.floor(Math.random() * 256);
                 let g = Math.floor(Math.random() * 256);
                 let b = Math.floor(Math.random() * 256);
-                square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             });
         });
 
         // Progressive darkening effect
-        square.addEventListener('mouseover', () => {
+        square.addEventListener('mouseover', (e) => {
             if (parseFloat(square.style.opacity) < 1) {
-                square.style.opacity = parseFloat(square.style.opacity) + 0.1;
+                e.target.style.opacity = parseFloat(e.target.style.opacity) + 0.1;
             }
         });
 
@@ -141,5 +139,5 @@ Being able to erase color when right clicking */
 
 /* When removing the grid, it needs to stay that way when changing the size of the grid */
 
-/* Need to change the code in order to optimize - too slow when changing the grid size - probably the loop*/
+/* Need to change the code in order to optimize - too slow when changing the grid size several times- probably the loop and too many functions*/
 
