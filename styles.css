@@ -63,6 +63,7 @@ footer p {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    min-width: 600px;
 }
 
 .content-containers {
@@ -105,8 +106,6 @@ footer p {
     flex-wrap: wrap;
     padding: 27px;
     gap: 18px;
-    max-width: 750px;
-    min-width: 450px;
 }
 
 .grid-slider {
@@ -184,6 +183,3 @@ footer p {
     font-size: 17px;
     letter-spacing: 1px;
 }
-
-
-/* TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST  */
